@@ -9,6 +9,31 @@ import { useState } from "react";
 
 const tagItems = ["Bla", "blubb", "hallo", "Huhu", "dumm", "doof"];
 const tagItems2 = ["Mumps", "Masern", "Scharlach", "Röteln", "Pest", "Grippe"];
+
+const cardArray = [
+  {
+    question:
+      "In the Kingdom Heart series who provides the english voice for Master Eraqus?",
+    answer: "HUHU",
+    tags: tagItems,
+  },
+  {
+    question: "Lorem didorium?",
+    answer: "HAHAH",
+    tags: tagItems2,
+  },
+  {
+    question: "Warum stinkt Kevin?",
+    answer: "Weil er immer stinkt",
+    tags: ["Kacka", "Schweiß", "Pipi", "Gammel"],
+  },
+  {
+    question: "Warum ist Lea so dumm?",
+    answer: "Weil lea kein hirn hat",
+    tags: ["leer", "nixdrin", "dummdideldumm", "rülps"],
+  },
+];
+
 function App() {
   const [page, setPage] = useState("home");
 
@@ -17,13 +42,13 @@ function App() {
       <Header />
       <main>
         <ul className="card-list">
-          <Card
-            question="In the Kingdom Heart series who provides the english voice for Master Eraqus?"
-            answer="HUHU"
-            tags={tagItems}
-          />
-
-          <Card question="Lorem didorium?" answer="HAHAH" tags={tagItems2} />
+          {cardArray.map((card) => (
+            <Card
+              question={card.question}
+              answer={card.answer}
+              tags={card.tags}
+            />
+          ))}
         </ul>
         {page === "home" && <Home />}
         {page === "bookmark" && <Bookmark />}
