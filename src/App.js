@@ -1,6 +1,6 @@
 import Navigation from "./Navbar/Navbar.js";
 import Header from "./Header/Header.js";
-import AddCard from "./Pages/CreatePage.js";
+import AddCard from "./Pages/Create.js";
 import Profile from "./Pages/Profile.js";
 import Home from "./Pages/Home.js";
 import Bookmark from "./Pages/Bookmark.js";
@@ -42,13 +42,14 @@ const cardArray = [
 
 function App() {
   const [page, setPage] = useState("home");
+  const [cards, setCards] = useState(cardArray);
 
   return (
     <div className="App">
       <Header />
       <main>
-        {page === "home" && <Home cardArray={cardArray} />}
-        {page === "bookmark" && <Bookmark cardArray={cardArray} />}
+        {page === "home" && <Home cardArray={cards} />}
+        {page === "bookmark" && <Bookmark cardArray={cards} />}
         {page === "profile" && <Profile />}
         {page === "addCard" && <AddCard />}
         <Navigation currentPage={page} navigateTo={setPage} />
@@ -58,3 +59,5 @@ function App() {
 }
 
 export default App;
+
+export function appendCard({ question, answer, tags }) {}

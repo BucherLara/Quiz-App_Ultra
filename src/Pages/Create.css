@@ -1,0 +1,33 @@
+fieldset {
+  box-sizing: border-box;
+  --primary: #ffffff;
+  --secondary: #ff4a11;
+  --secondary-light: #fddcd2;
+  --white: #ffffff;
+  --black: #252629;
+  --ff-primary: sans-serif;
+  --ff-serif: serif;
+  --fs-200: 0.6rem;
+  --fs-300: 0.8rem;
+  --fs-400: 1rem;
+  --fs-500: 1.1rem;
+  --fs-600: 1.5rem;
+  --fs-900: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20rem;
+  padding: 50px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+.submitButton {
+  background-color: #ff4a11;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  color: #fddcd2;
+}
