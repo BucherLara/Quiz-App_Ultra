@@ -1,8 +1,7 @@
 import "./Card.css";
 import Button from "../Button/Button.js";
 
-export default function Card({ question, answer, tags }) {
-  console.log(tags);
+export default function Card({ question, answer, tags, isBookmarked }) {
   return (
     <li className="card-list__item">
       <article className="card" data-js="card">
@@ -19,9 +18,13 @@ export default function Card({ question, answer, tags }) {
         <div className="card__button-bookmark">
           <button
             data-js="button__bookmark"
-            className="bookmark"
             aria-label="bookmark"
             type="button"
+            className={
+              isBookmarked
+                ? " bookmark bookmark--active"
+                : "bookmark:hover bookmark"
+            }
           >
             <svg
               className="bookmark__icon"

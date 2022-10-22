@@ -4,7 +4,7 @@ const initialState = true;
 
 export default function Button({ answer }) {
   const [state, setState] = useState(initialState);
-  console.log(state);
+
   return (
     <div>
       <button

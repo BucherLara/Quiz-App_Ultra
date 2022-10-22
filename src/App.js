@@ -12,30 +12,39 @@ const tagItems2 = ["Mumps", "Masern", "Scharlach", "Röteln", "Pest", "Grippe"];
 
 const cardArray = [
   {
+    id: 1,
     question:
       "In the Kingdom Heart series who provides the english voice for Master Eraqus?",
     answer: "HUHU",
     tags: tagItems,
+    isBookmarked: true,
   },
   {
+    id: 2,
     question: "Lorem didorium?",
     answer: "HAHAH",
     tags: tagItems2,
+    isBookmarked: true,
   },
   {
+    id: 3,
     question: "Warum stinkt Kevin?",
     answer: "Weil er immer stinkt",
     tags: ["Kacka", "Schweiß", "Pipi", "Gammel"],
+    isBookmarked: false,
   },
   {
+    id: 4,
     question: "Warum ist Lea so dumm?",
     answer: "Weil lea kein hirn hat",
     tags: ["leer", "nixdrin", "dummdideldumm", "rülps"],
+    isBookmarked: true,
   },
 ];
 
 function App() {
   const [page, setPage] = useState("home");
+  console.log(page);
 
   return (
     <div className="App">
@@ -44,9 +53,11 @@ function App() {
         <ul className="card-list">
           {cardArray.map((card) => (
             <Card
+              key={card.id}
               question={card.question}
               answer={card.answer}
               tags={card.tags}
+              isBookmarked={card.isBookmarked}
             />
           ))}
         </ul>
