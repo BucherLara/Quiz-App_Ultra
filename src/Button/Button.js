@@ -4,8 +4,9 @@ const initialState = true;
 
 export default function Button({ answer }) {
   const [state, setState] = useState(initialState);
+  console.log(state);
   return (
-    <main>
+    <div>
       <button
         type="button"
         data-js="answer-button"
@@ -22,6 +23,6 @@ export default function Button({ answer }) {
       <p className={state ? " card__answer" : "card__answer--active"}>
         {answer}
       </p>
-    </main>
+    </div>
   );
 }

@@ -1,18 +1,20 @@
 import "./Card.css";
 import Button from "../Button/Button.js";
 
-export default function Card({ question, answer, tag_1, tag_2, tag_3 }) {
+export default function Card({ question, answer, tags }) {
+  console.log(tags);
   return (
     <li className="card-list__item">
       <article className="card" data-js="card">
         <h2 className="card__question">{question}</h2>
         <Button answer={answer} />
 
-        {/* <p data-js="card__answer">{answer}</p> */}
         <ul className="card__tag-list" data-js="card__tag-list">
-          <li className="card__tag-list-item">{tag_1}</li>
-          <li className="card__tag-list-item">{tag_2}</li>
-          <li className="card__tag-list-item">{tag_3}</li>
+          {tags.map((tag) => (
+            <li key={tag} className="card__tag-list-item">
+              {tag}
+            </li>
+          ))}
         </ul>
         <div className="card__button-bookmark">
           <button
