@@ -44,6 +44,16 @@ function App() {
   const [page, setPage] = useState("home");
   const [cards, setCards] = useState(cardArray);
 
+  function appendCard(question, answer, tags) {
+    setCards((alterWert) => {
+      const neuerWert = [
+        ...alterWert,
+        { question, answer, tags: [tags], isBookmarked: true, id: 4444444 },
+      ];
+      return neuerWert;
+    });
+  }
+
   return (
     <div className="App">
       <Header />
@@ -51,7 +61,9 @@ function App() {
         {page === "home" && <Home cardArray={cards} />}
         {page === "bookmark" && <Bookmark cardArray={cards} />}
         {page === "profile" && <Profile />}
-        {page === "addCard" && <AddCard />}
+        {page === "addCard" && (
+          <AddCard navigateTo={setPage} appendCards={appendCard} />
+        )}
         <Navigation currentPage={page} navigateTo={setPage} />
       </main>
     </div>
@@ -59,5 +71,3 @@ function App() {
 }
 
 export default App;
-
-export function appendCard({ question, answer, tags }) {}
