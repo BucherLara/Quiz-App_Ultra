@@ -54,12 +54,21 @@ function App() {
     });
   }
 
+  function deleteCard(cardId) {
+    setCards((cards) => {
+      const neuesCardArray = cards.filter((card) => card.question !== cardId);
+      return neuesCardArray;
+    });
+  }
+
   return (
     <div className="App">
       <Header />
       <main>
-        {page === "home" && <Home cardArray={cards} />}
-        {page === "bookmark" && <Bookmark cardArray={cards} />}
+        {page === "home" && <Home cardArray={cards} deleteCard={deleteCard} />}
+        {page === "bookmark" && (
+          <Bookmark cardArray={cards} deleteCard={deleteCard} />
+        )}
         {page === "profile" && <Profile />}
         {page === "addCard" && (
           <AddCard navigateTo={setPage} appendCards={appendCard} />

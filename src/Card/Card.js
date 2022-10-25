@@ -1,7 +1,14 @@
 import "./Card.css";
 import Button from "../Button/Button.js";
 
-export default function Card({ question, answer, tags, isBookmarked }) {
+export default function Card({
+  question,
+  answer,
+  tags,
+  isBookmarked,
+  deleteCard,
+  cardId,
+}) {
   return (
     <li className="card-list__item">
       <article className="card" data-js="card">
@@ -35,6 +42,9 @@ export default function Card({ question, answer, tags, isBookmarked }) {
             </svg>
           </button>
         </div>
+        <button type="button" onClick={() => deleteCard(cardId)}>
+          DELETE
+        </button>
       </article>
     </li>
   );
