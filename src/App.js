@@ -4,7 +4,7 @@ import AddCard from "./Pages/Create.js";
 import Profile from "./Pages/Profile.js";
 import Home from "./Pages/Home.js";
 import Bookmark from "./Pages/Bookmark.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const tagItems = ["Bla", "blubb", "hallo", "Huhu", "dumm", "doof"];
 const tagItems2 = ["Mumps", "Masern", "Scharlach", "Röteln", "Pest", "Grippe"];
@@ -42,8 +42,18 @@ const cardArray = [
 
 function App() {
   const [page, setPage] = useState("home");
-  const [cards, setCards] = useState(cardArray);
-  console.log(cards);
+  const [cards, setCards] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("CardList") ?? cardArray);
+    } catch (error) {
+      console.warn(error);
+      return cardArray;
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("CardList", JSON.stringify(cards));
+  }, [cards]);
 
   function appendCard(question, answer, tags) {
     setCards((alterWert) => {
