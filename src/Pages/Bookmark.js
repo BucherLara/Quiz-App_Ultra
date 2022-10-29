@@ -1,6 +1,6 @@
 import Card from "../Card/Card.js";
 
-export default function Bookmark({ cardArray, deleteCard }) {
+export default function Bookmark({ cardArray, deleteCard, toggleBookmark }) {
   return (
     <ul className="card-list">
       {cardArray.map(
@@ -12,6 +12,8 @@ export default function Bookmark({ cardArray, deleteCard }) {
               answer={card.answer}
               tags={card.tags}
               isBookmarked={card.isBookmarked}
+              toggleBookmark={toggleBookmark}
+              deleteCard={deleteCard}
             />
           )
       )}

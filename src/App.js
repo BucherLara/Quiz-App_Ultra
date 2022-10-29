@@ -43,6 +43,7 @@ const cardArray = [
 function App() {
   const [page, setPage] = useState("home");
   const [cards, setCards] = useState(cardArray);
+  console.log(cards);
 
   function appendCard(question, answer, tags) {
     setCards((alterWert) => {
@@ -50,6 +51,18 @@ function App() {
         ...alterWert,
         { question, answer, tags: [tags], isBookmarked: true, id: 4444444 },
       ];
+      return neuerWert;
+    });
+  }
+  function toggleBookmark(cardId) {
+    setCards((cards) => {
+      const neuerWert = cards.map((card) => {
+        if (card.question === cardId) {
+          return { ...card, isBookmarked: !card.isBookmarked };
+        } else {
+          return card;
+        }
+      });
       return neuerWert;
     });
   }
@@ -65,9 +78,19 @@ function App() {
     <div className="App">
       <Header />
       <main>
-        {page === "home" && <Home cardArray={cards} deleteCard={deleteCard} />}
+        {page === "home" && (
+          <Home
+            cardArray={cards}
+            deleteCard={deleteCard}
+            toggleBookmark={toggleBookmark}
+          />
+        )}
         {page === "bookmark" && (
-          <Bookmark cardArray={cards} deleteCard={deleteCard} />
+          <Bookmark
+            cardArray={cards}
+            deleteCard={deleteCard}
+            toggleBookmark={toggleBookmark}
+          />
         )}
         {page === "profile" && <Profile />}
         {page === "addCard" && (

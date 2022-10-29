@@ -8,6 +8,7 @@ export default function Card({
   isBookmarked,
   deleteCard,
   cardId,
+  toggleBookmark,
 }) {
   return (
     <li className="card-list__item">
@@ -27,6 +28,9 @@ export default function Card({
             data-js="button__bookmark"
             aria-label="bookmark"
             type="button"
+            onClick={() => {
+              toggleBookmark(cardId);
+            }}
             className={
               isBookmarked
                 ? " bookmark bookmark--active"
